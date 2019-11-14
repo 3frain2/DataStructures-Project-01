@@ -39,13 +39,14 @@ public class ControladorMapa extends Observable {
   }
     
   public void verCordenadas() {
-     Integer key = null;
-    for (Map.Entry<Integer, Arista<Point>> e : miGrafo.getAristasContenido().entrySet()) {
+     Point key = null;
+    for (Map.Entry<Point, Nodo<Point>> e : miGrafo.getVerticesContenido().entrySet()) {
       key = e.getKey();
+   
+      System.out.println(miGrafo.getVerticesContenido().get(key).getVecinos().toString());
       /*
       System.out.println(key.getY());
-      System.out.println(key.getY());
-      */
+
       
       System.out.println(miGrafo.getAristasContenido().get(key));
       int w = miGrafo.getAristasContenido().get(key).getVerticeInicio().getNombre().getX();
@@ -57,7 +58,7 @@ public class ControladorMapa extends Observable {
       System.out.println("XDestino: " +   y);
       System.out.println("yDestino: " +   z);
       
-      System.out.println("FIN...");
+      System.out.println("FIN...");*/
     }
   }
   
