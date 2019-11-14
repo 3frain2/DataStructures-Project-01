@@ -7,7 +7,7 @@ package Modelo;
 import java.util.*;
 
 public class Grafo<T> {
-    private final LinkedHashMap<T, Nodo<T>> vertices;
+    private final LinkedHashMap<T, Vertice<T>> vertices;
     private final LinkedHashMap<Integer, Arista<T>> aristas;
 
     public Grafo() {
@@ -15,22 +15,22 @@ public class Grafo<T> {
 	this.aristas = new LinkedHashMap<>();
     }
     
-    public Nodo<T> insertarVertice(T vertice) {
-      Nodo<T> nodo = new Nodo<>(vertice);
+    public Vertice<T> insertarVertice(T vertice) {
+      Vertice<T> nodo = new Vertice<>(vertice);
 	vertices.put(nodo.getNombre(), nodo);
 	return nodo;
     }
     
-    public boolean insertarArista(Nodo<T> verticeInicio, Nodo<T> verticeDestino) {
+    public boolean insertarArista(Vertice<T> verticeInicio, Vertice<T> verticeDestino) {
 	Arista<T> arista = new Arista<>(verticeInicio, verticeDestino);
         
-	aristas.put(verticeInicio.getNombre().hashCode(), arista);
+	aristas.put(arista.hashCode(), arista);
 	verticeInicio.insertarVecino(arista);
 	verticeDestino.insertarVecino(arista);
 	return true;
     }
 
-    public Nodo getVertice(String nombre) {
+    public Vertice getVertice(String nombre) {
 	return this.vertices.get(nombre);
     }
 
@@ -42,11 +42,11 @@ public class Grafo<T> {
 	return new HashSet<>(this.aristas.values());
     }
 
-    public HashMap<Integer, Arista<T>> getAristasContenido() {
-      return (HashMap<Integer, Arista<T>>) aristas;
+    public LinkedHashMap<Integer, Arista<T>> getAristasContenido() {
+      return (LinkedHashMap<Integer, Arista<T>>) aristas;
     }
 
-    public HashMap<T, Nodo<T>> getVerticesContenido() {
+    public LinkedHashMap<T, Vertice<T>> getVerticesContenido() {
       return vertices;
     }
     

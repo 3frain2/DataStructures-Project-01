@@ -8,23 +8,23 @@ package Modelo;
 import java.util.UUID;
 
 public class Arista<T> implements Identificable {
-    private Nodo<T> verticeInicio;
-    private Nodo<T> verticeDestino;
+    private Vertice<T> verticeInicio;
+    private Vertice<T> verticeDestino;
     private int peso;
     private UUID code;
 
-    public Arista(Nodo<T> verticeInicio, Nodo<T> verticeDestino) {
+    public Arista(Vertice<T> verticeInicio, Vertice<T> verticeDestino) {
       this.verticeInicio = verticeInicio;
       this.verticeDestino = verticeDestino;
       this.peso = 1;	
       this.code = UUID.randomUUID();
     }
 
-    public Nodo<T> getVerticeInicio() {
+    public Vertice<T> getVerticeInicio() {
 	return this.verticeInicio;
     }
     
-    public Nodo<T> getVerticeDestino() {
+    public Vertice<T> getVerticeDestino() {
 	return this.verticeDestino;
     }
 
@@ -38,6 +38,10 @@ public class Arista<T> implements Identificable {
 
     public String toString() {
 	return "({" + this.verticeInicio + ", " + this.verticeDestino  + "}, "+ this.peso  +")";
+    }
+    
+    public int hashCode() {
+	return (verticeInicio.getNombre().hashCode() + verticeDestino.getNombre().hashCode());
     }
 
   @Override

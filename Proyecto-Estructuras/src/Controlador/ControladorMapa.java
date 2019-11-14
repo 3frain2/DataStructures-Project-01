@@ -5,13 +5,15 @@
  */
 package Controlador;
 
+import Modelo.AlgoritmoDijkstra;
 import Modelo.Arista;
 import Modelo.Grafo;
 import Modelo.Point;
-import Modelo.Nodo;
+import Modelo.Vertice;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
-import java.util.UUID;
 
 /**
  *
@@ -25,28 +27,27 @@ public class ControladorMapa extends Observable {
       this.miGrafo = new Grafo<>();
   }
     
-  public Nodo<Point> agregarPunto(int x, int y) {
+  public Vertice<Point> agregarPunto(int x, int y) {
     Point punto = new Point(x, y);
         
-    Nodo<Point> nuevo = miGrafo.insertarVertice(punto);
+    Vertice<Point> nuevo = miGrafo.insertarVertice(punto);
     System.out.println("Se agrego el vertice.");
     return nuevo;
   }
   
   //Vertice es un tipo de dato
-  public void agregarArco(Nodo verticeInicio, Nodo verticeDestino) {
+  public void agregarArco(Vertice verticeInicio, Vertice verticeDestino) {
     miGrafo.insertarArista(verticeInicio, verticeDestino);
   }
     
   public void verCordenadas() {
      Point key = null;
-    for (Map.Entry<Point, Nodo<Point>> e : miGrafo.getVerticesContenido().entrySet()) {
+      for (Map.Entry<Point, Vertice<Point>> e : miGrafo.getVerticesContenido().entrySet()) {
       key = e.getKey();
    
-      System.out.println(miGrafo.getVerticesContenido().get(key).getVecinos().toString());
+      System.out.println("X " + key.getX());
+      System.out.println("Y " + key.getY());
       /*
-      System.out.println(key.getY());
-
       
       System.out.println(miGrafo.getAristasContenido().get(key));
       int w = miGrafo.getAristasContenido().get(key).getVerticeInicio().getNombre().getX();
@@ -61,5 +62,13 @@ public class ControladorMapa extends Observable {
       System.out.println("FIN...");*/
     }
   }
-  
+
+  public void verDijktra(Vertice inicio, Vertice destino) {
+    AlgoritmoDijkstra dijkstra = new AlgoritmoDijkstra();
+    
+    dijkstra.repasarLista(miGrafo, inicio, destino);
+
+
+  }
+
 }

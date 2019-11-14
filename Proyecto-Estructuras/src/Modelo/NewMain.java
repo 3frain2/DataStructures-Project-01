@@ -19,17 +19,19 @@ public class NewMain {
    */
   public static void main(String[] args) {
     ControladorMapa map = new ControladorMapa();
-    Nodo<Point> a = map.agregarPunto(0, 10);
-    Nodo<Point> b = map.agregarPunto(20, 30);
-    Nodo<Point> c = map.agregarPunto(40, 50);
-    Nodo<Point> d = map.agregarPunto(60, 70);
-    Nodo<Point> e = map.agregarPunto(80, 90);
+    
+    Vertice<Point> a = map.agregarPunto(0, 10);
+    Vertice<Point> b = map.agregarPunto(20, 30);
+    Vertice<Point> c = map.agregarPunto(40, 50);
+    Vertice<Point> d = map.agregarPunto(60, 70);
+    Vertice<Point> e = map.agregarPunto(80, 90);
     
     
     map.agregarArco(a, d);
     map.agregarArco(c, b);
     map.agregarArco(a, b);
     
-    map.verCordenadas();
+    //map.verCordenadas();
+    map.verDijktra(c, e);
   } 
 }
