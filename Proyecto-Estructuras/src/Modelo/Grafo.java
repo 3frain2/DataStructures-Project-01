@@ -16,7 +16,8 @@ public class Grafo<T> {
     }
     
     public Vertice<T> insertarVertice(T vertice) {
-      Vertice<T> nodo = new Vertice<>(vertice);
+      Vertice<T> nodo = new Vertice<>();
+      nodo.setNombre(vertice);
 	vertices.put(nodo.getNombre(), nodo);
 	return nodo;
     }

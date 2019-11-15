@@ -12,6 +12,7 @@ import Modelo.Point;
 import Modelo.Vertice;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 
@@ -62,13 +63,47 @@ public class ControladorMapa extends Observable {
       System.out.println("FIN...");*/
     }
   }
+  /*
+  public void verDijktra() {
+    int V = miGrafo.getVerticesContenido().size();
+    AlgoritmoDijkstra dijkstra = new AlgoritmoDijkstra(v);
+    int source = 0; 
 
-  public void verDijktra(Vertice inicio, Vertice destino) {
-    AlgoritmoDijkstra dijkstra = new AlgoritmoDijkstra();
+    // Adjacency list representation of the  
+    // connected edges 
+    List<List<Vertice<Point>> > adj = new ArrayList<List<Vertice<Point>> >(); 
+
+    // Initialize list for every node 
+    for (int i = 0; i < V; i++) { 
+        List<Vertice<Point>> item = new ArrayList<Vertice<Point>>(); 
+        adj.add(item); 
+    } 
+  
+    // Inputs for the DPQ graph 
+    adj.get(0).add(new Vertice<Point>(1, 9)); 
+    adj.get(0).add(new Vertice<Point>(2, 6)); 
+    adj.get(0).add(new Vertice<Point>(3, 5)); 
+    adj.get(0).add(new Vertice<Point>(4, 3)); 
+
+    adj.get(2).add(new Vertice<Point>(1, 2)); 
+    adj.get(2).add(new Vertice<Point>(3, 4)); 
+
+    // Calculate the single source shortest path 
+    AlgoritmoDijkstra dpq = new AlgoritmoDijkstra(V); 
+    dpq.dijkstra(adj, source); 
+
+    // Print the shortest path to all the nodes 
+    // from the source node 
+    System.out.println("The shorted path from node :"); 
+    for (int i = 0; i < dpq.dist.length; i++) 
+        System.out.println(source + " to " + i + " is "
+                           + dpq.dist[i]); 
+      } 
+  } 
     
     dijkstra.repasarLista(miGrafo, inicio, destino);
 
 
   }
-
+  */
 }

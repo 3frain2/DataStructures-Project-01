@@ -6,6 +6,8 @@
 package Modelo;
 
 import Controlador.ControladorMapa;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -32,6 +34,40 @@ public class NewMain {
     map.agregarArco(a, b);
     
     //map.verCordenadas();
-    map.verDijktra(c, e);
-  } 
-}
+    //map.verDijktra(c, e);
+    
+        int V = 5; 
+        int source = 0; 
+  
+        // Adjacency list representation of the  
+        // connected edges 
+        List<List<Vertice<Point>> > adj = new ArrayList<List<Vertice<Point>> >(); 
+  
+        // Initialize list for every node 
+        for (int i = 0; i < V; i++) { 
+            List<Vertice<Point>> item = new ArrayList<Vertice<Point>>(); 
+            adj.add(item); 
+        } 
+  
+        // Inputs for the DPQ graph 
+        adj.get(0).add(new Vertice<Point>(a.getNombre(), 9)); 
+        adj.get(0).add(new Vertice<Point>(b.getNombre(), 6)); 
+        adj.get(0).add(new Vertice<Point>(c.getNombre(), 5)); 
+        adj.get(0).add(new Vertice<Point>(d.getNombre(), 3)); 
+  
+        adj.get(2).add(new Vertice<Point>(a.getNombre(), 2)); 
+        adj.get(2).add(new Vertice<Point>(c.getNombre(), 4)); 
+  
+        // Calculate the single source shortest path 
+        AlgoritmoDijkstra dpq = new AlgoritmoDijkstra(V); 
+        dpq.dijkstra(adj, source); 
+  
+        // Print the shortest path to all the nodes 
+        // from the source node 
+        System.out.println("The shorted path from node :"); 
+        for (int i = 0; i < dpq.dist.length; i++) 
+            System.out.println(source + " to " + i + " is "
+                               + dpq.dist[i]); 
+    } 
+} 
+
